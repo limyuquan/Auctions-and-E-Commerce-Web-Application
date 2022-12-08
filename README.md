@@ -1,7 +1,7 @@
 ﻿# Auctions
  A Fully Functional and Extensive Auctions / E-Commerce Webpage
 
-![Project Image](auctions\static\readme\indexgif.gif)
+![Project Image](https://github.com/limyuquan/auctions/blob/main/auctions/static/readme/indexgif.gif)
 
 > This is the index page of the Web Application
 
@@ -27,22 +27,27 @@ This Github repository is created to document my production of my auctions Web A
 
 > Login/ Logout/ Register
 
-![Login/Logout](auctions\static\readme\logingif.gif)
+![Login/Logout](https://github.com/limyuquan/auctions/blob/main/auctions/static/readme/logingif.gif)
+
 > Create Listing
 
-![Project Image](auctions\static\readme\categoriesgif.gif)
+![Create Listing](https://github.com/limyuquan/auctions/blob/main/auctions/static/readme/creategif.gif)
+
 > Categories
 
-![Project Image](auctions\static\readme\categoriesgif.gif)
+![Categories](https://github.com/limyuquan/auctions/blob/main/auctions/static/readme/categoriesgif.gif)
+
 > Add / Remove Listing from Wishlist
 
-![Project Image](auctions\static\readme\wishlistgif.gif)
+![Add / Remove Listing from Wishlist](https://github.com/limyuquan/auctions/blob/main/auctions/static/readme/wishlistgif.gif)
+
 > Closing / Opening Listings
 
-![Project Image](auctions\static\readme\openclosegif.gif)
+![Closing / Opening Listings](https://github.com/limyuquan/auctions/blob/main/auctions/static/readme/openclosegif.gif)
+
 > Comments Sections with Likes/ Dislikes
 
-![Project Image](auctions\static\readme\commentsgif.gif)
+![Comments Sections with Likes/ Dislikes](https://github.com/limyuquan/auctions/blob/main/auctions/static/readme/commentsgif.gif)
 
 [Youtube Video of the features](#media)
 
