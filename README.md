@@ -54,7 +54,7 @@ This Github repository is created to document my production of my auctions Web A
 This Web Application is a fully functional and completely standalone but can be continuously improved on.
 
 
-#### Technologies
+### Technologies
 
 - Python
 - Django
