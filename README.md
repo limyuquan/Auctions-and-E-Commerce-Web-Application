@@ -11,6 +11,7 @@
 You're sections headers will be used to reference location of destination.
 
 - [Description](#description)
+- [Technologies Used](#technologies)
 - [How To Use](#how-to-use)
 - [References](#references)
 - [What I learned](#what-i-have-learned-from-the-project)
