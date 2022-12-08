@@ -1,7 +1,7 @@
 ﻿# Auctions
  A Fully Functional and Extensive Auctions / E-Commerce Webpage
 
-![Project Image](\auctions\static\readme\indexgif.gif)
+![Project Image](auctions\static\readme\indexgif.gif)
 
 > This is the index page of the Web Application
 
