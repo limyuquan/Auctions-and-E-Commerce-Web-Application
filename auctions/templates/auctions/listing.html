@@ -1,0 +1,122 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<section class="index">
+    <div class="listing-row">
+        <div class="listing-category">
+            <form action="/category/{{category}}" method="post">
+                {% csrf_token %}
+                Category: <input type="submit" class="button-bid-wishlist" value="{{category}}">
+            </form>
+
+        </div>
+    </div>
+    <div class="listing-row">
+        <div class="listing-col">
+            <img src="{{listing.imageURL}}">
+        </div>
+
+        <div class="listing-col listing-content">
+            {% if not get_wishlist and not isSeller and not anonymous%}
+            <form action="{% url 'listing' listing.pk%}" method="post">
+                {% csrf_token %}
+                <label>Add item to wishlist</label> <br>
+                <input class="button-bid-wishlist" type="submit" value="Wishlist" name="submit-wishlist">
+            </form>
+            {% elif isSeller %}
+            <input class="seller-button" type="submit" value="Seller" name="submit-wishlist">
+            <form action="{% url 'close-open' listing.pk%}" method="post">
+                {% csrf_token %}
+                {% if isOpen%}
+                <input class="button-bid-wishlist close-button" type="submit" value="Close Listing"
+                    name="close-listing">
+                {% else %}
+                <input class="button-bid-wishlist open-button" type="submit" value="Open Listing" name="open-listing">
+                {% endif %}
+            </form>
+            {% elif get_wishlist%}
+            <form action="{% url 'listing' listing.pk%}" method="post">
+                {% csrf_token %}
+                <label>Item in wishlist</label> <br>
+                <input class="button-bid-wishlist" type="submit" value="Remove" name="remove-wishlist">
+            </form>
+            {% endif %}
+            <div class="listing-p">
+                <p>Item: {{listing.title}}</p>
+                <p>Description: {{listing.description}}</p>
+                <p>Category: {{listing.category.category_name}}</p>
+                <p>Seller: {{listing.seller.username}}</p>
+                <p>Original Price: ${{listing.price}}</p>
+                <p>Current Bid: ${{current_bid}}</p>
+            </div>
+            {% if isOpen %}
+            {% if not isSeller and not anonymous%}
+            <form action="{% url 'listing' listing.pk%}" method="post">
+                {% csrf_token %}
+                <label>Place Bid</label>
+                <input class="input-bid" type="number" min="{{current_bid}}" name="bid">
+                <input class="button-bid" type="submit" name="submit-bid" value="bid">
+            </form>
+            {% endif %}
+            <div class="register">
+                Number of bids currently: {{number_of_bids}}
+            </div>
+            {% if get_error %}
+            <div class="error-msg">
+                <i class="fa fa-times-circle"></i>
+                {{error}}
+            </div>
+            {% endif %}
+            {% else %}
+            <span class="isActive closed">Closed</span>
+            {% if isWinner %}
+            <p class="listing-winner">You have won the bid!</p>
+            {% endif %}
+            {% endif %}
+        </div>
+    </div>
+
+</section>
+
+<section class="comment-body">
+    <div class="comment-container">
+        {% if user.is_authenticated %}
+        <div class="comment-row post-comment">
+            <div class="comment-content">
+                <form action="{% url 'listing' listing.pk%}" method="post">
+                    {% csrf_token %}
+                    <span class="comment-name">Post a comment:</span> <br>
+                    <input type="text" class="comment-input" name="comment">
+                    <input class="button-bid" type="submit" value="Post" name="submit-comment">
+                </form>
+            </div>
+        </div>
+        {% else %}
+        <div class="comment-row post-comment">
+            <div class="comment-content"><span><a href="/login">Login</a> to post a comment</span></div>
+        </div>
+        {% endif %}
+        {% for comment in comments%}
+        <div class="comment-row post-comment">
+            <div class="comment-content">
+                <span class="comment-name">{{comment.commenter.username}}</span>
+                <span class="comment-time">{{comment.time}}</span> <br>
+                <span class="comment-comment">{{comment.comment}}</span>
+                <br><br>
+                <span>
+                    <form action="{% url 'listing' listing.pk%}" method="post">
+                        {% csrf_token %}
+                        <button name="like" value="{{comment.pk}}" class="comment-button"><i
+                                class="fa-solid fa-thumbs-up"></i>{{comment.likes}}</button>
+                        <button name="dislike" value="{{comment.pk}}" class="comment-button"><i
+                                class="fa-solid fa-thumbs-down"></i>{{comment.dislikes}}</button>
+                    </form>
+
+                </span>
+            </div>
+        </div>
+        {% endfor %}
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<section class="index">
+    <h2>Listings for: {{category}}</h2>
+
+    {% for listing in listings %}
+    <div class="row">
+        <div class="index-col"><img src="{{listing.imageURL}}"></div>
+        <div class="index-col">
+            <div class="index-text">
+                <a href="/listing/{{listing.pk}}">
+                    <p>Item: {{listing.title}}</p>
+                    <p>Initial Price: ${{listing.price}}</p>
+                    <p>Discription: {{listing.description}}</p>
+                    <p>Category: {{listing.category.category_name}}</p>
+                    <p>Seller: {{listing.seller.username}}</p>
+                    {% if listing.isActive%}
+                    <span class="isActive">Active</span>
+                    {% else%}
+                    <span class="isActive closed">Closed</span>
+                    {% endif %}
+                </a>
+            </div>
+        </div>
+    </div>
+    {%empty%}
+    <div class="wishlist-row">
+        <div class="wishlist-empty">
+            <p>Category is empty, <a href="/create">click</a> to create some items for the category</p>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

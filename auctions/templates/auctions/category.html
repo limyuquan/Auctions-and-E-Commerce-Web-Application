@@ -1,0 +1,24 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+<div class="post-comment categories-title">
+    <h5>Categories</h5>
+</div>
+<section class="comment-body">
+    <div class="comment-container">
+        {% for category in categories %}
+        <a class="category-link" href="/category/{{category.category_name}}">
+            <div class="comment-row post-comment">
+                <div class="comment-content">
+                    <span class="comment-comment">
+                        <p>{{category.category_name}}</p>
+                    </span>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

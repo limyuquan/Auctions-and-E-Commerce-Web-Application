@@ -1,0 +1,38 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<section class="index">
+
+    <h2> Wishlist</h2>
+
+
+    {% for item in wishlist %}
+    <div class="row">
+        <div class="index-col"><img src="{{item.item.imageURL}}"></div>
+        <div class="index-col">
+            <div class="index-text">
+                <a href="/listing/{{item.item.pk}}">
+                    <p>Item: {{item.item.title}}</p>
+                    <p>Initial Price: ${{item.item.price}}</p>
+                    <p>Description: {{item.item.description}}</p>
+                    <p>Category: {{item.item.category.category_name}}</p>
+                    <p>Seller: {{item.item.seller.username}}</p>
+                    {% if item.item.isActive%}
+                    <span class="isActive">Active</span>
+                    {% else%}
+                    <span class="isActive closed">Closed</span>
+                    {% endif %}
+                </a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="wishlist-row">
+        <div class="wishlist-empty">
+            <p>Wishlist is empty, <a href="/">click</a> to add some items to your wishlist</p>
+        </div>
+
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}
